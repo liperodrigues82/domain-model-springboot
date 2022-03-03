@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -26,6 +28,7 @@ public class Order implements Serializable {
 	private Instant moment;
 	private OrderStatus status;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;

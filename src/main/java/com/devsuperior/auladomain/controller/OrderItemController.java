@@ -15,37 +15,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.auladomain.entities.Order;
-import com.devsuperior.auladomain.services.OrderService;
+import com.devsuperior.auladomain.entities.OrderItem;
+import com.devsuperior.auladomain.services.OrderItemService;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/order-items")
+public class OrderItemController {
 
 	@Autowired
-	private OrderService service;
+	private OrderItemService service;
 	
 	@PostMapping
-	public ResponseEntity<Order> insert(@RequestBody Order obj) {
+	public ResponseEntity<OrderItem> insert(@RequestBody OrderItem obj) {
 		service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Order> findById(@PathVariable Long id) {
-		Order obj = service.findById(id);
+	public ResponseEntity<OrderItem> findById(@PathVariable Long id) {
+		OrderItem obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Order>> findAll() {
-		List<Order> list = service.findAll();
+	public ResponseEntity<List<OrderItem>> findAll() {
+		List<OrderItem> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order obj) {
+	public ResponseEntity<OrderItem> update(@PathVariable Long id, @RequestBody OrderItem obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}

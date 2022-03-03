@@ -7,9 +7,37 @@ Abordando:
 - POO
 - ORM
 - Domain Model
-- API Rest (Controlador somente com método de busca por id)
+- API Rest 
+  ### Endpoints:
+  - Get 
+    - http://localhost:8080/clients
+    - http://localhost:8080/orders
+    - http://localhost:8080/products
+    - http://localhost:8080/order-items
+  - Get By Id
+    - http://localhost:8080/clients/{id}
+    - http://localhost:8080/orders/{id}
+    - http://localhost:8080/products/{id}
+    - http://localhost:8080/order-items/{id}
+  - Post
+    - http://localhost:8080/clients
+    - http://localhost:8080/orders
+    - http://localhost:8080/products
+    - http://localhost:8080/order-items
+  - Put
+    - http://localhost:8080/clients/{id}
+    - http://localhost:8080/orders/{id}
+    - http://localhost:8080/products/{id}
+    - http://localhost:8080/order-items/{id}
+  - Delete
+    - http://localhost:8080/clients/{id}
+    - http://localhost:8080/orders/{id}
+    - http://localhost:8080/products/{id}
+    - http://localhost:8080/order-items/{id}
 
-Tecnologias e ferramentas utilizadas:
+<hr>
+
+### Tecnologias e ferramentas utilizadas:
 - JDK 11
 - Maven
 - Spring Data Jpa

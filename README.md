@@ -7,7 +7,7 @@ Abordando:
 - POO
 - ORM
 - Domain Model
-- API Rest 
+- API Rest (completei o CRUD, em aula foi passado somente o endpoint Get, buscando por id no controlador Client)
   ### Endpoints:
   - Get 
     - http://localhost:8080/clients

@@ -1,4 +1,4 @@
-package com.devsuperior.auladomain.controller;
+package com.devsuperior.auladomain.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -15,37 +15,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.auladomain.entities.Order;
-import com.devsuperior.auladomain.services.OrderService;
+import com.devsuperior.auladomain.entities.Product;
+import com.devsuperior.auladomain.services.ProductService;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/products")
+public class ProductController {
 
 	@Autowired
-	private OrderService service;
+	private ProductService service;
 	
 	@PostMapping
-	public ResponseEntity<Order> insert(@RequestBody Order obj) {
+	public ResponseEntity<Product> insert(@RequestBody Product obj) {
 		service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Order> findById(@PathVariable Long id) {
-		Order obj = service.findById(id);
+	public ResponseEntity<Product> findById(@PathVariable Long id) {
+		Product obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Order>> findAll() {
-		List<Order> list = service.findAll();
+	public ResponseEntity<List<Product>> findAll() {
+		List<Product> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order obj) {
+	public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}

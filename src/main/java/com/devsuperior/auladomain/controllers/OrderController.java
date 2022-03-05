@@ -1,4 +1,4 @@
-package com.devsuperior.auladomain.controller;
+package com.devsuperior.auladomain.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -15,37 +15,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.auladomain.entities.Client;
-import com.devsuperior.auladomain.services.ClientService;
+import com.devsuperior.auladomain.entities.Order;
+import com.devsuperior.auladomain.services.OrderService;
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/orders")
+public class OrderController {
 
 	@Autowired
-	private ClientService service;
+	private OrderService service;
 	
 	@PostMapping
-	public ResponseEntity<Client> insert(@RequestBody Client obj) {
+	public ResponseEntity<Order> insert(@RequestBody Order obj) {
 		service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Client> findById(@PathVariable Long id) {
-		Client obj = service.findById(id);
+	public ResponseEntity<Order> findById(@PathVariable Long id) {
+		Order obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Client>> findAll() {
-		List<Client> list = service.findAll();
+	public ResponseEntity<List<Order>> findAll() {
+		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Client> update(@PathVariable Long id, @RequestBody Client obj) {
+	public ResponseEntity<Order> update(@PathVariable Long id, @RequestBody Order obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}

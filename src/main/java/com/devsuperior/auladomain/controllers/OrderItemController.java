@@ -1,4 +1,4 @@
-package com.devsuperior.auladomain.controller;
+package com.devsuperior.auladomain.controllers;
 
 import java.net.URI;
 import java.util.List;

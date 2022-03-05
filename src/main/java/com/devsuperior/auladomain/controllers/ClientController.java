@@ -1,4 +1,4 @@
-package com.devsuperior.auladomain.controller;
+package com.devsuperior.auladomain.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -15,37 +15,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.devsuperior.auladomain.entities.Product;
-import com.devsuperior.auladomain.services.ProductService;
+import com.devsuperior.auladomain.entities.Client;
+import com.devsuperior.auladomain.services.ClientService;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/clients")
+public class ClientController {
 
 	@Autowired
-	private ProductService service;
+	private ClientService service;
 	
 	@PostMapping
-	public ResponseEntity<Product> insert(@RequestBody Product obj) {
+	public ResponseEntity<Client> insert(@RequestBody Client obj) {
 		service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Product> findById(@PathVariable Long id) {
-		Product obj = service.findById(id);
+	public ResponseEntity<Client> findById(@PathVariable Long id) {
+		Client obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Product>> findAll() {
-		List<Product> list = service.findAll();
+	public ResponseEntity<List<Client>> findAll() {
+		List<Client> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product obj) {
+	public ResponseEntity<Client> update(@PathVariable Long id, @RequestBody Client obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 	}

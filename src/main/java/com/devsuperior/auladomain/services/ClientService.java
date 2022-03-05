@@ -43,9 +43,9 @@ public class ClientService {
 		entity.setEmail(obj.getEmail());
 	}
 	
-	public void delele(Long id) {
+	public void delete(Long id) {
 		try {
-		repository.deleteById(id);
+			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {

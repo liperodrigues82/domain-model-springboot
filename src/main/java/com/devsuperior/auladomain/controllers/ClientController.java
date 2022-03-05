@@ -52,7 +52,7 @@ public class ClientController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
-		service.delele(id);
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 }
